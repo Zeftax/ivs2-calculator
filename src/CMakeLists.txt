@@ -34,4 +34,6 @@ target_sources(${PROJECT_NAME}
 # link math library
 target_link_libraries(${PROJECT_NAME} PRIVATE ivs2-mathlib)
 
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+include(Install)
 
