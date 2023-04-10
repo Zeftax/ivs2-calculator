@@ -37,3 +37,14 @@ target_link_libraries(${PROJECT_NAME} PRIVATE ivs2-mathlib)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(Install)
 
+find_package(Doxygen 1.8.0)
+if(DOXYGEN_FOUND)
+    set(doxyfile ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile)
+    add_custom_target(doc
+            COMMAND ${DOXYGEN_EXECUTABLE} ${doxyfile}
+            WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+            COMMENT "Generating API documentation with Doxygen"
+            VERBATIM
+            )
+endif()
+
