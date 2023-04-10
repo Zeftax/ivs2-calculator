@@ -20,8 +20,7 @@ project("ivs2-calculator"
 )
 
 # find math library
-set(CMAKE_PREFIX_PATH "${CMAKE_CURRENT_SOURCE_DIR}/extern/ivs2-mathlib/install")
-find_package(ivs2-mathlib 0.1 CONFIG REQUIRED)
+add_subdirectory("extern/ivs2-mathlib")
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -32,5 +31,7 @@ target_sources(${PROJECT_NAME}
         src/calculator.cpp
 )
 
-target_link_libraries(${PROJECT_NAME} PRIVATE ivsm::ivs2-mathlib)
+# link math library
+target_link_libraries(${PROJECT_NAME} PRIVATE ivs2-mathlib)
+
 

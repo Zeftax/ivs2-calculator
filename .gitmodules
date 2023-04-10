@@ -1,0 +1,6 @@
+[submodule "src/extern/ivs2-mathlib"]
+	path = src/extern/ivs2-mathlib
+	url = git@github.com:Zeftax/ivs2-mathlib.git
+[submodule "src/extern/ivs2-profiler"]
+	path = src/extern/ivs2-profiler
+	url = git@github.com:Zeftax/ivs2-profiler.git

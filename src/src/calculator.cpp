@@ -14,12 +14,13 @@
  */
 
 #include <iostream>
-#include "ivs2-mathlib/ivs-math.hpp"
+#include "ivs-math.hpp"
 
 using namespace std;
 
 int main ()
 {
-    cout << "Hello calculator!" << endl;
+    double res = ivsm::add(4, 5);
+    cout << "4 + 5 = " << res << endl;
     return 0;
 }
