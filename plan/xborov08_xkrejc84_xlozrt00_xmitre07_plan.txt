@@ -1,0 +1,60 @@
+Stanovene terminy
+===
+
+15.3.	- plan projektu
+26.3.	- mat knihovna + testy knihovny
+2.4.	- profiler
+9.4.	- frontend + parsovani + testy profileru
+16.4.	- testovani celku, easter egg
+23.4.	- instalatory linux + windows, ukonceni vyvoje
+25.4.	- odevzdavka
+
+Rozdeleni prace
+===
+
+xborov08
+==
+
+ - Matematicka knihovna
+ - GUI + jeho parsovani
+
+xkrejc84
+==
+
+ - Profiler
+ - Instalator
+
+xlozrt00
+==
+
+ - Testy
+ - Kontrola uzivatelske prirucky
+ - Parsovani GUI
+
+xmitre07
+==
+
+ - Testy
+ - Uzivatelska prirucka
+ - GUI
+ - Kontrola dokumentace
+
+Ostatni info
+===
+
+Komunikacni platforma
+==
+
+Ke komunikaci nas tym pouziva platformu Discord + obcasne schuzky ve
+studentskem klubu u kachnicky
+
+Verzovani
+==
+
+K verzovani pouzivame git, hostovany na platforme github.
+Repozitare nasleduji:
+ - Matematicka knihovna: https://github.com/Zeftax/ivs2-mathlib
+ - Profiler: https://github.com/Zeftax/ivs2-profiler
+ - Kalkulacka: https://github.com/Zeftax/ivs2-calculator
+
+Cilime na platformu arch linux.
