@@ -2,5 +2,7 @@ src/build/
 src/install/
 src/bin/
 src/docs/
+src/.cache/
 src/doxygen_warning.txt
+src/compile_commands.json
 documentation.pdf

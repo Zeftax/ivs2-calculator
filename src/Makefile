@@ -41,8 +41,10 @@ pack: clean
 # removes all files that should not be submitted
 clean: calc-clean mathlib-clean profile-clean
 	rm -R -f $(CALCDIR)/bin
+	rm -R -f $(CALCDIR)/.cache
 	rm -R -f $(DOCSDIR)
 	rm -f $(CALCDIR)/doxygen_warning.txt
+	rm -f $(CALCDIR)/compile_commands.json
 
 # runs math library tests
 test:
@@ -111,3 +113,11 @@ profile-clean:
 	rm -R -f $(PROFILEDIR)/build
 	rm -R -f $(PROFILEDIR)/install
 
+
+# == OTHER TARGETS ==
+
+# generates compile_commands.json for autocomplete in neovim
+ccmds:
+	mkdir -p $(CALCDIR)/build && cd $(CALCDIR)/build &&\
+		cmake .. && cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .
+	cp $(CALCDIR)/build/compile_commands.json $(CALCDIR)/
