@@ -36,9 +36,18 @@ target_sources(${PROJECT_NAME}
 # link math library
 target_link_libraries(${PROJECT_NAME} PRIVATE ivs2-mathlib)
 
+
+# -- GTK 4 setup --
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GTK4 REQUIRED IMPORTED_TARGET gtk4)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::GTK4)
+
+# -- include cmake scripts --
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(Install)
 
+# -- doxygen target --
 find_package(Doxygen 1.8.0)
 if(DOXYGEN_FOUND)
     set(doxyfile ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile)
