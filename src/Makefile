@@ -15,6 +15,8 @@
 MATHDIR    = extern/ivs2-mathlib
 PROFILEDIR = extern/ivs2-profiler
 CALCDIR    = .
+DOCSDIR    = docs
+ROOTDIR    = ..
 
 EXEC       = bin/ivs2-calculator
 
@@ -37,6 +39,8 @@ pack: clean
 # removes all files that should not be submitted
 clean: calc-clean mathlib-clean profile-clean
 	rm -R -f $(CALCDIR)/bin
+	rm -R -f $(DOCSDIR)
+	rm -f $(CALCDIR)/doxygen_warning.txt
 
 # runs math library tests
 test:
@@ -46,10 +50,14 @@ test:
 		echo "You must run 'make' or 'make mathlib' first";\
 	fi\
 
-# generates documentation
+# generates documentation in PDF (latex) and HTML
 doc:
 	# TODO:
 	# doxygen generation for calc, mathlib and profiler
+	mkdir -p $(DOCSDIR)/calculator
+	doxygen
+	cd $(DOCSDIR)/calculator/latex && make
+	cp $(DOCSDIR)/calculator/latex/refman.pdf $(ROOTDIR)/documentation.pdf
 
 # runs the program
 run: 

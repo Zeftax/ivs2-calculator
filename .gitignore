@@ -1,3 +1,6 @@
 src/build/
 src/install/
 src/bin/
+src/docs/
+src/doxygen_warning.txt
+documentation.pdf
