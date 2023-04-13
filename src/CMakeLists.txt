@@ -1,5 +1,7 @@
 ###################################################
-# Project name: ivs2-calculator
+# Application name: ratulator
+# Project: ivs2-calculator
+#
 # Date:         2023-04-10
 # File:         CMakeLists.txt
 #
@@ -14,7 +16,7 @@
 
 # == SETUP ==
 cmake_minimum_required(VERSION 3.16)
-project("ivs2-calculator"
+project("ratulator"
         VERSION 0.1.0
         DESCRIPTION "Simple calculator app"
 )

@@ -1,5 +1,7 @@
 /*************************************************
- * Project name: ivs2-calculator
+ * Application name: ratulator
+ * Project: ivs2-calculator
+ *
  * Date:         2023-04-10
  *************************************************/
 /**

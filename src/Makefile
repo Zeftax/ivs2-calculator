@@ -1,5 +1,7 @@
 ###################################################
-# Project name: ivs2-calculator
+# Application name: ratulator
+# Project: ivs2-calculator
+#
 # Date:         2023-04-10
 # File:         Makefile
 #
@@ -18,7 +20,7 @@ CALCDIR    = .
 DOCSDIR    = docs
 ROOTDIR    = ..
 
-EXEC       = bin/ivs2-calculator
+EXEC       = bin/ratulator
 
 
 # == REQUIRED TARGETS ==
