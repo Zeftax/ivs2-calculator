@@ -46,6 +46,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::GTK4)
 # -- include cmake scripts --
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(Install)
+include(Package)
 
 # -- doxygen target --
 find_package(Doxygen 1.8.0)

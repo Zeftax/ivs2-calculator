@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=/opt/ratulator/bin/ratulator
+Icon=ratulator
+Name=Ratulator
+Terminal=false
+Categories=Utility;Application;

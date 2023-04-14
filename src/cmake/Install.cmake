@@ -21,6 +21,15 @@ endif()
 
 install(TARGETS ${PROJECT_NAME}
     EXPORT "${PROJECT_NAME}"
+    COMPONENT ${PROJECT_NAME}
     INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
+install(FILES 
+    "${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.desktop" 
+    DESTINATION /usr/share/applications
+)
+install(FILES 
+    "${CMAKE_CURRENT_SOURCE_DIR}/icons/${PROJECT_NAME}.png" 
+    DESTINATION /usr/share/icons/hicolor/512x512/apps
 )
 

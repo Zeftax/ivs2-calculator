@@ -21,6 +21,7 @@ DOCSDIR    = docs
 ROOTDIR    = ..
 
 EXEC       = bin/ratulator
+INSTALLDIR = /opt/ratulator
 
 
 # == REQUIRED TARGETS ==
@@ -42,6 +43,7 @@ pack: clean
 clean: calc-clean mathlib-clean profile-clean
 	rm -R -f $(CALCDIR)/bin
 	rm -R -f $(CALCDIR)/.cache
+	rm -R -f $(CALCDIR)/_packages
 	rm -R -f $(DOCSDIR)
 	rm -f $(CALCDIR)/doxygen_warning.txt
 	rm -f $(CALCDIR)/compile_commands.json
@@ -79,13 +81,19 @@ profile: bin mathlib
 
 
 # == INSTALLATION TARGETS ==
-.PHONY: calculator mathlib bin
+.PHONY: calc calc-install mathlib bin
 
-# installs ivs2-calculator
+# compiles ivs2-calculator
 calc: bin
 	mkdir -p $(CALCDIR)/build && cd $(CALCDIR)/build &&\
-		cmake .. && cmake --build . --target install
-	cp $(CALCDIR)/install/bin/* $(CALCDIR)/bin
+		cmake .. && make
+	cp $(CALCDIR)/build/ratulator $(CALCDIR)/bin
+
+# compiles ivs2-calculator and installs it on the current system
+calc-install: calc
+	cd $(CALCDIR)/build &&\
+		cmake -DCMAKE_INSTALL_PREFIX:PATH=$(INSTALLDIR) . &&\
+		make install
 
 # installs ivs2-mathlib
 mathlib: bin
@@ -96,12 +104,17 @@ bin:
 	mkdir -p $(CALCDIR)/bin
 
 # == CLEAN TARGETS == 
-.PHONY: calc-clean mathlib-clean profile-clean
+.PHONY: calc-clean calc-uninstall mathlib-clean profile-clean
 
 # removes compiled calculator files
 calc-clean:
 	rm -R -f $(CALCDIR)/build
-	rm -R -f $(CALCDIR)/install
+
+# removes installed ivs2-calculator files from the system
+calc-uninstall: 
+	rm -R -f $(INSTALLDIR)
+	rm -f /usr/share/applications/ratulator.desktop
+	rm -f /usr/share/icons/hicolor/512x512/apps/ratulator.png
 
 # removes compiled ivs2-mathlib files
 mathlib-clean:
@@ -115,9 +128,15 @@ profile-clean:
 
 
 # == OTHER TARGETS ==
+.PHONY: ccmds deb
 
 # generates compile_commands.json for autocomplete in neovim
 ccmds:
 	mkdir -p $(CALCDIR)/build && cd $(CALCDIR)/build &&\
 		cmake .. && cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .
 	cp $(CALCDIR)/build/compile_commands.json $(CALCDIR)/
+
+# generates .deb package
+deb: calc
+	cd $(CALCDIR)/build && cpack -G DEB\
+		|| echo "Something went wrong. Try running 'make clean' first"

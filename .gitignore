@@ -5,4 +5,5 @@ src/docs/
 src/.cache/
 src/doxygen_warning.txt
 src/compile_commands.json
+src/_packages
 documentation.pdf
