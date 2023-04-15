@@ -21,13 +21,11 @@
 #include "ivs-math.hpp"
 #include "calculatorWindow.hpp"
 
-using namespace std;
-
 
 int main(int argc, char **argv)
 {
 	Glib::RefPtr<Gtk::Application> app =
-		Gtk::Application::create("org.gtkmm.examples.base");
+		Gtk::Application::create("org.gtkmm.ratulator");
 
 	return app->make_window_and_run<CalculatorWindow>(argc, argv);
 }

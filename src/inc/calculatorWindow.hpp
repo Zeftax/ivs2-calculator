@@ -8,4 +8,7 @@ class CalculatorWindow : public Gtk::Window
 {
 	public:
 		CalculatorWindow();
+
+	private:
+		void build_layout();
 };
