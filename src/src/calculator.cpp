@@ -16,29 +16,18 @@
  */
 
 #include <iostream>
-#include <gtk/gtk.h>
+#include <gtkmm.h>
+
 #include "ivs-math.hpp"
+#include "calculatorWindow.hpp"
 
 using namespace std;
 
-static void activate(GtkApplication *app, gpointer user_data)
-{
-	auto builder = Gtk::Builder::create_from_file("res/layout.glade");
-
-	Gtk::Window* calcWindow = (Gtk::Window*) malloc(sizeof(Gtk::Window*));
-
-	builder->get_widget("aboutWindow", calcWindow);
-
-	app->add_window(*calcWindow);
-	calcWindow->set_visible(true);
-}
 
 int main(int argc, char **argv)
 {
-	app = Gtk::Application::create("org.gtkmm.ratulator");
+	Glib::RefPtr<Gtk::Application> app =
+		Gtk::Application::create("org.gtkmm.examples.base");
 
-	app->signal_activate().connect([] () { on_app_activate(); });
-
-	//Shows the window and returns when it is closed.
-	return app->run(argc, argv);
+	return app->make_window_and_run<CalculatorWindow>(argc, argv);
 }

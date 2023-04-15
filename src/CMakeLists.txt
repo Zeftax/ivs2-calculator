@@ -11,7 +11,7 @@
 # Author: Jakub Mitrenga <xmitre07@vutbr.cz>
 #
 # Description: Simple calculator app
-# 
+#
 ###################################################
 
 # == SETUP ==
@@ -24,6 +24,8 @@ project("ratulator"
 # find math library
 add_subdirectory("extern/ivs2-mathlib")
 
+include_directories(inc)
+
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(${PROJECT_NAME})
@@ -31,6 +33,7 @@ add_executable(${PROJECT_NAME})
 target_sources(${PROJECT_NAME}
     PRIVATE
         src/calculator.cpp
+		src/calculatorWindow.cpp
 )
 
 # link math library
@@ -39,9 +42,9 @@ target_link_libraries(${PROJECT_NAME} PRIVATE ivs2-mathlib)
 
 # -- GTK 4 setup --
 find_package(PkgConfig REQUIRED)
-pkg_check_modules(GTK4 REQUIRED IMPORTED_TARGET gtk4)
+pkg_check_modules(gtkmm REQUIRED IMPORTED_TARGET gtkmm-4.0)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::GTK4)
+target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::gtkmm)
 
 # -- include cmake scripts --
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
@@ -59,4 +62,3 @@ if(DOXYGEN_FOUND)
             VERBATIM
             )
 endif()
-
