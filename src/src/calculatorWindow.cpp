@@ -13,5 +13,5 @@ CalculatorWindow::CalculatorWindow()
 
 void CalculatorWindow::build_layout()
 {
-	auto builder = Gtk::Builder::create_from_file("res/layout.glade");
+	auto builder = Gtk::Builder::create_from_file("res/ratulator.ui");
 }
