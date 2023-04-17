@@ -5,7 +5,7 @@
   <!-- interface-copyright GPLv3 -->
   <!-- interface-authors Zdenek Borovec
 Tomas Krejci
-Jan 
+Jan
 Jakub Mitrenga -->
   <requires lib="gtk" version="4.6"/>
   <object class="GtkWindow" id="calcWindow">
@@ -27,7 +27,7 @@ Jakub Mitrenga -->
                       <object class="GtkOverlay" id="mulOverlay">
                         <property name="child">
                           <object class="GtkImage" id="mulbg">
-                            <property name="file">rats/x.png</property>
+							  <property name="file">res/rats/x.png</property>
                           </object>
                         </property>
                         <child>
@@ -301,7 +301,7 @@ Jakub Mitrenga -->
                 </child>
                 <child>
                   <object class="GtkImage" id="subwaySurfImg">
-                    <property name="file">subway.png</property>
+					  <property name="file">res/subway.png</property>
                     <property name="halign">baseline</property>
                   </object>
                 </child>

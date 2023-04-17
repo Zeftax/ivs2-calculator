@@ -19,7 +19,6 @@
 #include <gtkmm.h>
 
 #include "ivs-math.hpp"
-#include "calculatorWindow.hpp"
 
 namespace
 {
