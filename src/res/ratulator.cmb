@@ -2,7 +2,7 @@
 <!DOCTYPE cambalache-project SYSTEM "cambalache-project.dtd">
 <cambalache-project version="0.10.3" target_tk="gtk-4.0">
   <ui>
-	(1,None,"ratulator.ui","ratulator.ui",None,None,None,None,None,None)
+	(1,None,"ratulator.ui","ratulator.ui",None,"GPLv3","Zdenek Borovec\nTomas Krejci\nJan \nJakub Mitrenga",None,None,None)
   </ui>
   <object>
 	(1,1,"GtkWindow","calcWindow",None,None,None,None,None),
@@ -39,14 +39,18 @@
 	(1,32,"GtkButton","decimalButton",9,None,None,None,10),
 	(1,33,"GtkFrame","outputFrame",2,None,None,None,2),
 	(1,34,"GtkScrolledWindow","outputScrolled",33,None,None,None,None),
-	(1,35,"GtkViewport","outputViewPort",34,None,None,None,None)
+	(1,35,"GtkViewport","outputViewPort",34,None,None,None,None),
+	(1,36,"GtkOverlay","mulOverlay",5,None,None,None,-1),
+	(1,38,"GtkImage","mulbg",36,None,None,None,None),
+	(1,39,"GtkEntry","mullvalue",36,None,None,None,None),
+	(1,40,"GtkEntry","mulrvalue",36,None,None,None,1)
   </object>
   <object_property>
-	(1,1,"GtkWidget","halign","start",None,None,None,None,None),
 	(1,1,"GtkWindow","default-height","200",None,None,None,None,None),
 	(1,1,"GtkWindow","default-width","200",None,None,None,None,None),
 	(1,1,"GtkWindow","title","Ratulacka :DDDDDDDDDDDDDDDD Chapes?? Jakoze Rat Kalkulacka :DDDDDDDD",None,None,None,None,None),
 	(1,2,"GtkOrientable","orientation","vertical",None,None,None,None,None),
+	(1,2,"GtkWidget","valign","start",None,None,None,None,None),
 	(1,3,"GtkFrame","label","Vstup",None,None,None,None,None),
 	(1,6,"GtkFrame","label","Klavesnice",None,None,None,None,None),
 	(1,7,"GtkBox","homogeneous","True",None,None,None,None,None),
@@ -82,7 +86,11 @@
 	(1,30,"GtkButton","label","0",None,None,None,None,None),
 	(1,31,"GtkButton","label","rand",None,None,None,None,None),
 	(1,32,"GtkButton","label",".",None,None,None,None,None),
-	(1,33,"GtkFrame","label","Vysledek",None,None,None,None,None)
+	(1,33,"GtkFrame","label","Vysledek",None,None,None,None,None),
+	(1,36,"GtkOverlay","child",None,None,None,None,None,38),
+	(1,38,"GtkImage","file","rats/x.png",None,None,None,None,None),
+	(1,39,"GtkWidget","halign","start",None,None,None,None,None),
+	(1,40,"GtkWidget","halign","end",None,None,None,None,None)
   </object_property>
   <object_layout_property>
 	(1,8,10,"GtkGridLayoutChild","column","0",None,None,None,None),
