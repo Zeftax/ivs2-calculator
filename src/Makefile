@@ -22,6 +22,8 @@ ROOTDIR    = ..
 BUILDDIR   = _build
 BINDIR     = _bin
 INSTALLDIR = /usr/bin
+PACKNAME   = xborov08_xkrejc84_xlozrt00_xmitre07
+PACKDIR   := $(shell mktemp -d -t ivstmp-XXX)
 
 EXEC       = ratulator
 
@@ -34,12 +36,26 @@ all: mathlib profile calc
 
 # makes the project ready to be submitted
 pack: clean
-	# TODO: 
 	# create temporary dir
+	mkdir -p $(PACKDIR)/doc
+	mkdir -p $(PACKDIR)/install
+	mkdir -p $(PACKDIR)/repo
+	# copy clean repo
+	cp -r -T $(ROOTDIR) $(PACKDIR)/repo
 	# create install packages
+	make deb-calc
+	make deb-prof
 	# generate docs
+	make doc
 	# copy docs, packages and repo into temp dir
+	cp $(DOCSDIR)/program_documentation.pdf $(PACKDIR)/doc
+	cp $(CALCDIR)/_packages/* $(PACKDIR)/install
+	# name temp dir correctly
+	mv $(PACKDIR) $(ROOTDIR)/$(PACKNAME)
 	# zip temporary dir
+	zip -r $(ROOTDIR)/$(PACKNAME).zip $(ROOTDIR)/$(PACKNAME)
+	# remove temp directory
+	rm -R -f $(ROOTDIR)/$(PACKNAME)
 
 # removes all files that should not be submitted
 clean: calc-clean mathlib-clean profile-clean
@@ -126,7 +142,7 @@ profile-clean:
 
 
 # == OTHER TARGETS ==
-.PHONY: ccmds deb
+.PHONY: ccmds deb-calc deb-prof
 
 # generates compile_commands.json for autocomplete in neovim
 ccmds:
@@ -135,6 +151,11 @@ ccmds:
 	cp $(CALCDIR)/$(BUILDDIR)/compile_commands.json $(CALCDIR)/
 
 # generates .deb package
-deb: calc
+deb-calc: calc
 	cd $(CALCDIR)/$(BUILDDIR) && cpack -G DEB\
+		|| echo "Something went wrong. Try running 'make clean' first"
+
+deb-prof: profile
+	cd $(PROFILEDIR)/$(BUILDDIR) \
+		&& cpack -D CPACK_OUTPUT_FILE_PREFIX="../../../_packages" -G DEB \
 		|| echo "Something went wrong. Try running 'make clean' first"
