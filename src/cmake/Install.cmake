@@ -29,7 +29,7 @@ install(FILES
     DESTINATION /usr/share/applications
 )
 install(FILES 
-    "${CMAKE_CURRENT_SOURCE_DIR}/icons/${PROJECT_NAME}.png" 
+    "${CMAKE_CURRENT_SOURCE_DIR}/res/icons/${PROJECT_NAME}.png" 
     DESTINATION /usr/share/icons/hicolor/512x512/apps
 )
 
