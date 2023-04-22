@@ -1,6 +1,6 @@
-src/build/
+src/_build/
 src/install/
-src/bin/
+src/_bin/
 src/docs/
 src/.cache/
 src/doxygen_warning.txt

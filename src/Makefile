@@ -19,9 +19,11 @@ PROFILEDIR = extern/ivs2-profiler
 CALCDIR    = .
 DOCSDIR    = docs
 ROOTDIR    = ..
+BUILDDIR   = _build
+BINDIR     = _bin
+INSTALLDIR = /usr/bin
 
-EXEC       = bin/ratulator
-INSTALLDIR = /opt/ratulator
+EXEC       = ratulator
 
 
 # == REQUIRED TARGETS ==
@@ -41,20 +43,16 @@ pack: clean
 
 # removes all files that should not be submitted
 clean: calc-clean mathlib-clean profile-clean
-	rm -R -f $(CALCDIR)/bin
+	rm -R -f $(CALCDIR)/$(BINDIR)
 	rm -R -f $(CALCDIR)/.cache
 	rm -R -f $(CALCDIR)/_packages
-	rm -R -f $(DOCSDIR)
+	rm -R -f $(CALCDIR)/$(DOCSDIR)
 	rm -f $(CALCDIR)/doxygen_warning.txt
 	rm -f $(CALCDIR)/compile_commands.json
 
 # runs math library tests
-test:
-	@if [ -f $(MATHDIR)/build/tests ]; then\
-		$(MATHDIR)/build/tests;\
-	else\
-		echo "You must run 'make' or 'make mathlib' first";\
-	fi\
+test: mathlib
+	$(MATHDIR)/$(BUILDDIR)/tests;\
 
 # generates documentation in PDF (latex) and HTML
 doc:
@@ -63,21 +61,21 @@ doc:
 	mkdir -p $(DOCSDIR)/calculator
 	doxygen
 	cd $(DOCSDIR)/calculator/latex && make
-	cp $(DOCSDIR)/calculator/latex/refman.pdf $(ROOTDIR)/documentation.pdf
+	cp $(DOCSDIR)/calculator/latex/refman.pdf $(CALCDIR)/$(DOCSDIR)/program_documentation.pdf
 
 # runs the program
 run: 
-	@if [ -f $(EXEC) ]; then\
-		$(EXEC);\
+	@if [ -f $(CALCDIR)/$(BINDIR)/$(EXEC) ]; then\
+		$(CALCDIR)/$(BINDIR)/$(EXEC);\
 	else\
 		echo "You must run 'make' or 'make calc' first";\
 	fi\
 
 # installs the profiler
 profile: bin mathlib
-	mkdir -p $(PROFILEDIR)/build && cd $(PROFILEDIR)/build &&\
+	mkdir -p $(PROFILEDIR)/$(BUILDDIR) && cd $(PROFILEDIR)/$(BUILDDIR) &&\
 		cmake .. && cmake --build . --target install
-	cp $(PROFILEDIR)/install/bin/* $(CALCDIR)/bin
+	cp $(PROFILEDIR)/install/bin/* $(CALCDIR)/$(BINDIR)
 
 
 # == INSTALLATION TARGETS ==
@@ -85,45 +83,45 @@ profile: bin mathlib
 
 # compiles ivs2-calculator
 calc: bin
-	mkdir -p $(CALCDIR)/build && cd $(CALCDIR)/build &&\
+	mkdir -p $(CALCDIR)/$(BUILDDIR) && cd $(CALCDIR)/$(BUILDDIR) &&\
 		cmake .. && make
-	cp $(CALCDIR)/build/ratulator $(CALCDIR)/bin
+	cp $(CALCDIR)/$(BUILDDIR)/$(EXEC) $(CALCDIR)/$(BINDIR)
 
 # compiles ivs2-calculator and installs it on the current system
 calc-install: calc
-	cd $(CALCDIR)/build &&\
+	cd $(CALCDIR)/$(BUILDDIR) &&\
 		cmake -DCMAKE_INSTALL_PREFIX:PATH=$(INSTALLDIR) . &&\
 		make install
 
 # installs ivs2-mathlib
 mathlib: bin
-	mkdir -p $(MATHDIR)/build && cd $(MATHDIR)/build &&\
+	mkdir -p $(MATHDIR)/$(BUILDDIR) && cd $(MATHDIR)/$(BUILDDIR) &&\
 		cmake .. && cmake --build . --target install
 
 bin:
-	mkdir -p $(CALCDIR)/bin
+	mkdir -p $(CALCDIR)/$(BINDIR)
 
 # == CLEAN TARGETS == 
 .PHONY: calc-clean calc-uninstall mathlib-clean profile-clean
 
 # removes compiled calculator files
 calc-clean:
-	rm -R -f $(CALCDIR)/build
+	rm -R -f $(CALCDIR)/$(BUILDDIR)
 
 # removes installed ivs2-calculator files from the system
 calc-uninstall: 
-	rm -R -f $(INSTALLDIR)
+	rm -f $(INSTALLDIR)/$(EXEC)
 	rm -f /usr/share/applications/ratulator.desktop
 	rm -f /usr/share/icons/hicolor/512x512/apps/ratulator.png
 
 # removes compiled ivs2-mathlib files
 mathlib-clean:
-	rm -R -f $(MATHDIR)/build
+	rm -R -f $(MATHDIR)/$(BUILDDIR)
 	rm -R -f $(MATHDIR)/install
 
 # removes compiled ivs2-profiler files
 profile-clean:
-	rm -R -f $(PROFILEDIR)/build
+	rm -R -f $(PROFILEDIR)/$(BUILDDIR)
 	rm -R -f $(PROFILEDIR)/install
 
 
@@ -132,11 +130,11 @@ profile-clean:
 
 # generates compile_commands.json for autocomplete in neovim
 ccmds:
-	mkdir -p $(CALCDIR)/build && cd $(CALCDIR)/build &&\
+	mkdir -p $(CALCDIR)/$(BUILDDIR) && cd $(CALCDIR)/$(BUILDDIR) &&\
 		cmake .. && cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .
-	cp $(CALCDIR)/build/compile_commands.json $(CALCDIR)/
+	cp $(CALCDIR)/$(BUILDDIR)/compile_commands.json $(CALCDIR)/
 
 # generates .deb package
 deb: calc
-	cd $(CALCDIR)/build && cpack -G DEB\
+	cd $(CALCDIR)/$(BUILDDIR) && cpack -G DEB\
 		|| echo "Something went wrong. Try running 'make clean' first"

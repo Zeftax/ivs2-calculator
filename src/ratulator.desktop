@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=/opt/ratulator/bin/ratulator
+Exec=/usr/bin/ratulator
 Icon=ratulator
 Name=Ratulator
 Terminal=false
