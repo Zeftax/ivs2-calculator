@@ -1,11 +1,14 @@
-/*!
-	\file iEvaluable.hpp
-	\author Zdenek Borovec
-	\author Tomas Krejci
-	\author Jan Lozrt
-	\author Jakub Mitrenga
-	\copyright GNU GPLv3
-*/
+/**
+ * @file iEvaluable.hpp
+ *
+ * @author Zdeněk Borovec <xborov08@vutbr.cz>
+ * @author Tomáš Krejčí <xkrejc84@vutbr.cz>
+ * @author Jan Lozrt <xlozrt00@vutbr.cz>
+ * @author Jakub Mitrenga <xmitre07@vutbr.cz>
+ *
+ * @brief Interface for evaluable elements
+ * @copyright GNU GPLv3
+ */
 
 
 #pragma once
