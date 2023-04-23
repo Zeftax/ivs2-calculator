@@ -1,3 +1,13 @@
+/*!
+	\file iEvaluable.hpp
+	\author Zdenek Borovec
+	\author Tomas Krejci
+	\author Jan Lozrt
+	\author Jakub Mitrenga
+	\copyright GNU GPLv3
+*/
+
+
 #pragma once
 
 //! Interface for evaluable elements

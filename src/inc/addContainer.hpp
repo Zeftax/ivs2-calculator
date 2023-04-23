@@ -1,3 +1,12 @@
+/*!
+	\file addContainer.hpp
+	\author Zdenek Borovec
+	\author Tomas Krejci
+	\author Jan Lozrt
+	\author Jakub Mitrenga
+	\copyright GNU GPLv3
+*/
+
 #pragma once
 
 #include <gtkmm.h>
