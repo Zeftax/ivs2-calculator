@@ -1,0 +1,13 @@
+Program tráví značné množství času v matematické funkci ivsm::add() z důvodu výpočtu sumy načtených dat.
+Tato funkce využívá běžný operátor "+" a tedy momentálně nevidím způsob, jak ji optimalizovat.
+
+Další náročná funkce je std::pow() volaná naší funkcí ivsm::exponentiate().
+Funkce std::pow() z knihovny cmath již je pravděpodobně optimalizovaná dostatečně, avšak dle
+odpovědi uživatele Emile Cormier na stackoverflow (https://stackoverflow.com/a/2940800)
+by v určitých případech bylo rychlejší prosté násobení proměnných.
+
+K profilingu byla využita sada nástrojů gperftools.
+Z grafu jsem parametrem -ignore vynechal funkci read_input(), která neobsahuje 
+žádné volání funkce z naší matematické knihovny a není tím pádem relevantní.
+
+-- Tomáš Krejčí (xkrejc84)
