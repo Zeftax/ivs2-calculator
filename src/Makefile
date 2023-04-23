@@ -68,7 +68,7 @@ clean: calc-clean mathlib-clean profile-clean
 
 # runs math library tests
 test: mathlib
-	$(MATHDIR)/$(BUILDDIR)/tests;\
+	cd $(MATHDIR) && make test
 
 # generates documentation in PDF (latex) and HTML
 doc:
@@ -89,8 +89,7 @@ run:
 
 # installs the profiler
 profile: bin mathlib
-	mkdir -p $(PROFILEDIR)/$(BUILDDIR) && cd $(PROFILEDIR)/$(BUILDDIR) &&\
-		cmake .. && cmake --build . --target install
+	cd $(PROFILEDIR) && make
 	cp $(PROFILEDIR)/install/bin/* $(CALCDIR)/$(BINDIR)
 
 
@@ -111,8 +110,7 @@ calc-install: calc
 
 # installs ivs2-mathlib
 mathlib: bin
-	mkdir -p $(MATHDIR)/$(BUILDDIR) && cd $(MATHDIR)/$(BUILDDIR) &&\
-		cmake .. && cmake --build . --target install
+	cd $(MATHDIR) && make
 
 bin:
 	mkdir -p $(CALCDIR)/$(BINDIR)
@@ -132,13 +130,11 @@ calc-uninstall:
 
 # removes compiled ivs2-mathlib files
 mathlib-clean:
-	rm -R -f $(MATHDIR)/$(BUILDDIR)
-	rm -R -f $(MATHDIR)/install
+	cd $(MATHDIR) && make clean
 
 # removes compiled ivs2-profiler files
 profile-clean:
-	rm -R -f $(PROFILEDIR)/$(BUILDDIR)
-	rm -R -f $(PROFILEDIR)/install
+	cd $(PROFILEDIR) && make clean
 
 
 # == OTHER TARGETS ==
