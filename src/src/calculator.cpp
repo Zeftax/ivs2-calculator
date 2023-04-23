@@ -13,6 +13,7 @@
  * @author Jakub Mitrenga <xmitre07@vutbr.cz>
  *
  * @brief Simple calculator app
+ * @copyright GNU GPLv3
  */
 
 #include <iostream>
