@@ -12,7 +12,7 @@
  * @author Jan Lozrt <xlozrt00@vutbr.cz>
  * @author Jakub Mitrenga <xmitre07@vutbr.cz>
  *
- * @brief Simple calculator app
+ * @brief Main for the calculator
  * @copyright GNU GPLv3
  */
 
