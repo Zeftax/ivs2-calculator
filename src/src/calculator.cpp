@@ -37,7 +37,7 @@ void on_app_activate()
 	auto refBuilder = Gtk::Builder::create();
 	try
 	{
-		refBuilder->add_from_file("res/ratulator.ui");
+		refBuilder->add_from_resource("/org/ratulator/res/ratulator.glade");
 	}
 	catch(const Glib::FileError& ex)
 	{
@@ -56,7 +56,8 @@ void on_app_activate()
 	}
 
 	// Get the GtkBuilder-instantiated dialog:
-	pDialog = refBuilder->get_widget<Gtk::Window>("calcWindow");
+	// pDialog = refBuilder->get_widget<Gtk::Window>("calcWindow");
+	refBuilder->get_widget("calcWindow", pDialog);
 	if (!pDialog)
 	{
 	std::cerr << "Could not get the dialog" << std::endl;
@@ -79,7 +80,7 @@ void on_app_activate()
 
 int main(int argc, char** argv)
 {
-	app = Gtk::Application::create("org.gtkmm.example");
+	app = Gtk::Application::create("org.ratulator");
 
 	// Instantiate a dialog when the application has been activated.
 	// This can only be done after the application has been registered.

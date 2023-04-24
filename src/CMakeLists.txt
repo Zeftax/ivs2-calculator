@@ -41,7 +41,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE ivs2-mathlib)
 
 # -- GTK 4 setup --
 find_package(PkgConfig REQUIRED)
-pkg_check_modules(gtkmm REQUIRED IMPORTED_TARGET gtkmm-4.0)
+pkg_check_modules(gtkmm REQUIRED IMPORTED_TARGET gtkmm-3.0)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::gtkmm)
 
