@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/org/ratulator">
+      <file compressed="true">res/ratulator.glade</file>
+      <file>res/rats/0.png</file>
+      <file>res/rats/1.png</file>
+      <file>res/rats/2.png</file>
+      <file>res/rats/3.png</file>
+      <file>res/rats/4.png</file>
+      <file>res/rats/5.png</file>
+      <file>res/rats/6.png</file>
+      <file>res/rats/7.png</file>
+      <file>res/rats/8.png</file>
+      <file>res/rats/9.png</file>
+      <file>res/rats/point.png</file>
+      <file>res/rats/equals.png</file>
+  </gresource>
+</gresources>

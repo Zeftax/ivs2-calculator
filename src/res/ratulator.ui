@@ -301,7 +301,7 @@ Jakub Mitrenga -->
                 </child>
                 <child>
                   <object class="GtkImage" id="subwaySurfImg">
-					  <property name="file">res/subway.png</property>
+                      <property name="resource">/org/ratulator/res/subway.png</property>
                     <property name="halign">baseline</property>
                   </object>
                 </child>
