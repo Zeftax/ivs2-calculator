@@ -14,4 +14,17 @@
 #ifndef CALCULATOR_HPP
 #define CALCULATOR_HPP
 
+//! Operations that can be represented by the calculator,
+typedef enum
+{
+    ADD,
+    SUTRACT,
+    MULTIPLY,
+    DIVIDE,
+    POWER,
+    ROOT,
+    FACTORIAL,
+    LOG
+} operation_t;
+
 #endif // !CALCULATOR_HPP
