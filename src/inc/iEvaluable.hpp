@@ -25,7 +25,8 @@ class IEvaluable
 {
 public:
 	//! A destructor
-	virtual inline ~IEvaluable() = 0;
+    IEvaluable(){};
+	virtual ~IEvaluable(){};
 
 	//! Evaluate my numerical value
 	/*!
@@ -56,4 +57,3 @@ public:
 protected:
     IEvaluable* m_parent;
 };
-IEvaluable::~IEvaluable(){}
