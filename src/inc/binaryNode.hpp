@@ -1,12 +1,12 @@
 /**
- * @file addNode.hpp
+ * @file binaryNode.hpp
  *
  * @author Zdeněk Borovec <xborov08@vutbr.cz>
  * @author Tomáš Krejčí <xkrejc84@vutbr.cz>
  * @author Jan Lozrt <xlozrt00@vutbr.cz>
  * @author Jakub Mitrenga <xmitre07@vutbr.cz>
  *
- * @brief A container for the 'add' mathematical expression
+ * @brief A mathematical operation node that has two operands (children);
  * @copyright GNU GPLv3
  */
 
@@ -18,14 +18,20 @@
 /*!
  *	Represents the binary addition (+) operation.
  */
-class AddNode : public BinaryOperation
+class BinaryNode : public IEvaluable
 {
 public:
 	//! Constructor.
-	AddNode(IEvaluable* parent);
+	virtual BinaryNode(IEvaluable* parent) = 0;
 
     //! Destructor.
-	virtual ~AddContainer();
+	virtual inline ~BinaryNode() = 0;
 
 protected:
+    //! The child on the left side of this operand.
+    IEvaluable* m_lChild;
+
+    //! The child on the right side of this operand.
+    IEvaluable* m_pchild;
 }
+BinaryNode::~BinaryNode(){}

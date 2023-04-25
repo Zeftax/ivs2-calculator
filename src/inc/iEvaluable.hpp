@@ -24,6 +24,12 @@
 class IEvaluable
 {
 public:
+    //! A constructor
+    virtual inline IEvaluable() = 0;
+
+	//! A destructor
+	virtual inline ~IEvaluable() = 0;
+
 	//! Evaluate my numerical value
 	/*!
 	 *	Either return my value if I hold a number, or evaluete the expression
@@ -32,10 +38,6 @@ public:
 	 *	\returns Numerical value of my insides.
 	 */
 	virtual double Evaluate() = 0;
-
-	//! A destructor
-	virtual inline ~IEvaluable() = 0;
-
     //! Delete given child and replace it with an input node.
     /*!
      *  @remarks This function should be called by the child object

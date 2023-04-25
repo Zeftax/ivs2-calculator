@@ -1,31 +1,31 @@
 /**
- * @file entryNode.hpp
+ * @file entrynode.hpp
  *
- * @author Zdeněk Borovec <xborov08@vutbr.cz>
- * @author Tomáš Krejčí <xkrejc84@vutbr.cz>
- * @author Jan Lozrt <xlozrt00@vutbr.cz>
- * @author Jakub Mitrenga <xmitre07@vutbr.cz>
+ * @author zdeněk borovec <xborov08@vutbr.cz>
+ * @author tomáš krejčí <xkrejc84@vutbr.cz>
+ * @author jan lozrt <xlozrt00@vutbr.cz>
+ * @author jakub mitrenga <xmitre07@vutbr.cz>
  *
- * @brief Leaf node of the operational tree. You can enter numbers here.
- * @copyright GNU GPLv3
+ * @brief leaf node of the operational tree. you can enter numbers here.
+ * @copyright gnu gplv3
  */
 
 #pragma once
 
 #include <gtkmm.h>
 
-//!	Leaf node of the operational tree.
+//!	leaf node of the operational tree.
 /*!
- *	You can enter numbers here.
+ *	you can enter numbers here.
  */
-class EntryNode : public IEvaluable
+class entrynode : public ievaluable
 {
 public:
-	//! Constructor.
-	EntryNode();
+	//! constructor.
+	entrynode();
 
-    //! Destructor.
-	virtual ~EntryNode();
+    //! destructor.
+	virtual ~entrynode();
 
 protected:
 }
