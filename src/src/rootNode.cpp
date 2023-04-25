@@ -18,9 +18,10 @@
 
 RootNode::RootNode(Gtk::Viewport* p_viewPort)
 {
-    this->m_child = (IEvaluable*) malloc(sizeof(EntryNode));
-    this->m_parent = NULL;
-    p_viewPort->add(*this->m_child->m_widget);
+    m_child = new EntryNode();
+    m_parent = NULL;
+    Gtk::Widget* childWidget = this->m_child->get_widget();
+    p_viewPort->add(*childWidget);
 }
 
 RootNode::~RootNode()
@@ -36,3 +37,5 @@ double RootNode::evaluate()
 void RootNode::delete_child(IEvaluable* p_child){}
 
 void RootNode::change_child(IEvaluable* p_child, operation_t p_type){}
+
+Gtk::Widget* RootNode::get_widget(){}

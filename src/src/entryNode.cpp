@@ -16,9 +16,7 @@
 
 EntryNode::EntryNode()
 {
-    Gtk::Entry entry = Gtk::Entry();
-
-    this->m_widget = &entry;
+    m_entry = Gtk::Entry();
 }
 
 EntryNode::~EntryNode()
@@ -34,3 +32,8 @@ double EntryNode::evaluate()
 void EntryNode::delete_child(IEvaluable* p_child){}
 
 void EntryNode::change_child(IEvaluable* p_child, operation_t p_type){}
+
+Gtk::Widget* EntryNode::get_widget()
+{
+    return &m_entry;
+}

@@ -56,6 +56,8 @@ public:
      */
     void change_child(IEvaluable* p_child, operation_t p_type);
 
+    Gtk::Widget* get_widget();
+
 protected:
     //! The child of the root node
     IEvaluable* m_child;

@@ -54,5 +54,8 @@ public:
      *  @param  p_type  Type of the new child.
      */
     void change_child(IEvaluable* p_child, operation_t p_type);
+
+    Gtk::Widget* get_widget();
 protected:
+    Gtk::Entry m_entry;
 };
