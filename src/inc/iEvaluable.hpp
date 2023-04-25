@@ -44,7 +44,7 @@ public:
      *          on its parent.
      *  @param   p_child The child to be deleted.
      */
-    virtual DeleteChild(IEvaluable* p_child) = 0;
+    virtual void DeleteChild(IEvaluable* p_child) = 0;
 
     //! Change the childs type.
     /*!
@@ -53,7 +53,7 @@ public:
      *  @param  p_child The child to be replaced.
      *  @param  p_type  Type of the new child.
      */
-    virtual ChangeChild(IEvaluable* p_child, operation_t p_type) = 0;
+    virtual void ChangeChild(IEvaluable* p_child, operation_t p_type) = 0;
 
 protected:
     IEvaluable* m_parent;
