@@ -14,6 +14,8 @@
 
 #include <gtkmm.h>
 
+#include "iEvaluable.hpp"
+
 //!	leaf node of the operational tree.
 /*!
  *	you can enter numbers here.
@@ -34,7 +36,7 @@ public:
 	 *
 	 *	\returns Numerical value of my insides.
 	 */
-    void evaluate();
+    double evaluate();
 
     //! Delete given child and replace it with an input node.
     /*!
@@ -52,7 +54,5 @@ public:
      *  @param  p_type  Type of the new child.
      */
     void change_child(IEvaluable* p_child, operation_t p_type);
-
-    Gtk::Entry m_Entry;
 protected:
 };

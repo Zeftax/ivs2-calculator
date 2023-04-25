@@ -14,15 +14,25 @@
 #include <gtkmm.h>
 
 #include "rootNode.hpp"
+#include "entryNode.hpp"
 
 RootNode::RootNode(Gtk::Viewport* p_viewPort)
 {
-    this->m_child = EntryNode();
-    this->m_parent = null;
-    p_viewPort->set_child(this->m_child->m_entry);
+    this->m_child = (IEvaluable*) malloc(sizeof(EntryNode));
+    this->m_parent = NULL;
+    p_viewPort->add(*this->m_child->m_widget);
 }
 
 RootNode::~RootNode()
 {
     delete this->m_child;
 }
+
+double RootNode::evaluate()
+{
+    return 0;
+}
+
+void RootNode::delete_child(IEvaluable* p_child){}
+
+void RootNode::change_child(IEvaluable* p_child, operation_t p_type){}

@@ -16,5 +16,21 @@
 
 EntryNode::EntryNode()
 {
-    m_Entry.set_expand(true);
+    Gtk::Entry entry = Gtk::Entry();
+
+    this->m_widget = &entry;
 }
+
+EntryNode::~EntryNode()
+{
+
+}
+
+double EntryNode::evaluate()
+{
+    return 0;
+}
+
+void EntryNode::delete_child(IEvaluable* p_child){}
+
+void EntryNode::change_child(IEvaluable* p_child, operation_t p_type){}

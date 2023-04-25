@@ -61,6 +61,7 @@ target_sources(${PROJECT_NAME}
     PRIVATE
         src/calculator.cpp
         src/rootNode.cpp
+        src/entryNode.cpp
         ${CMAKE_CURRENT_BINARY_DIR}/${GRESOURCE_C}
 )
 

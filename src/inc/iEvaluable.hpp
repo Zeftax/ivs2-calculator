@@ -54,6 +54,9 @@ public:
      */
     virtual void change_child(IEvaluable* p_child, operation_t p_type) = 0;
 
+    //! The widget of this element
+    Gtk::Widget* m_widget;
+
 protected:
     IEvaluable* m_parent;
 };
