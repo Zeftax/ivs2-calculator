@@ -1,0 +1,4 @@
+xborov08 100 (matematická knihovna, tvorba gui, jeho parsování a propojení s mat. knihovnou)
+xkrejc84 100 (profiling, build system a balení aplikace, výpomoc s gui)
+xlozrt00 100 (výpomoc s testy matematické knihovny, kontrola kódu, komentářů a uživatelské příručky)
+xmitre07 100 (testy matematické knihovny, uživatelská příručka, kontrola dokumentace)
