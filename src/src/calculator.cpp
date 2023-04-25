@@ -47,13 +47,13 @@ void on_app_activate()
 	}
 	catch(const Glib::MarkupError& ex)
 	{
-	std::cerr << "MarkupError: " << ex.what() << std::endl;
-	return;
+        std::cerr << "MarkupError: " << ex.what() << std::endl;
+        return;
 	}
 	catch(const Gtk::BuilderError& ex)
 	{
-	std::cerr << "BuilderError: " << ex.what() << std::endl;
-	return;
+        std::cerr << "BuilderError: " << ex.what() << std::endl;
+        return;
 	}
 
 	// Get the GtkBuilder-instantiated dialog:
@@ -61,15 +61,13 @@ void on_app_activate()
 	refBuilder->get_widget("calcWindow", pDialog);
 	if (!pDialog)
 	{
-	std::cerr << "Could not get the dialog" << std::endl;
-	return;
+        std::cerr << "Could not get the dialog" << std::endl;
+        return;
 	}
-	/*
+
 	// Get the GtkBuilder-instantiated button, and connect a signal handler:
-	auto pButton = refBuilder->get_widget<Gtk::Button>("quit_button");
-	if (pButton)
-	pButton->signal_clicked().connect([] () { on_button_clicked(); });
-	*/
+
+
 	// It's not possible to delete widgets after app->run() has returned.
 	// Delete the dialog with its child widgets before app->run() returns.
 	pDialog->signal_hide().connect([] () { delete pDialog; });
@@ -88,6 +86,8 @@ int main(int argc, char** argv)
 	// It's possible to call app->register_application() explicitly, but
 	// usually it's easier to let app->run() do it for you.
 	app->signal_activate().connect([] () { on_app_activate(); });
+
+
 
 	return app->run(argc, argv);
 }
