@@ -20,6 +20,7 @@
 #include <gtkmm.h>
 
 #include "ivs-math.hpp"
+#include "rootNode.hpp"
 
 namespace
 {
@@ -65,8 +66,10 @@ void on_app_activate()
         return;
 	}
 
-	// Get the GtkBuilder-instantiated button, and connect a signal handler:
+    Gtk::Viewport* inputViewport;
+    refBuilder->get_widget("InputViewport", inputViewport);
 
+    RootNode rootNode = RootNode(inputViewport);
 
 	// It's not possible to delete widgets after app->run() has returned.
 	// Delete the dialog with its child widgets before app->run() returns.

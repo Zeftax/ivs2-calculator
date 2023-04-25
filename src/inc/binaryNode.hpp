@@ -14,10 +14,7 @@
 
 #include <gtkmm.h>
 
-//!	A container for the 'add' mathematical expression.
-/*!
- *	Represents the binary addition (+) operation.
- */
+//!	Parent node for all binary operations
 class BinaryNode : public IEvaluable
 {
 public:
@@ -25,7 +22,7 @@ public:
 	virtual BinaryNode(IEvaluable* parent) = 0;
 
     //! Destructor.
-	virtual inline ~BinaryNode() = 0;
+	~BinaryNode();
 
 protected:
     //! The child on the left side of this operand.
@@ -33,5 +30,5 @@ protected:
 
     //! The child on the right side of this operand.
     IEvaluable* m_pchild;
-}
+};
 BinaryNode::~BinaryNode(){}

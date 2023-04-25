@@ -24,9 +24,6 @@
 class IEvaluable
 {
 public:
-    //! A constructor
-    virtual inline IEvaluable() = 0;
-
 	//! A destructor
 	virtual inline ~IEvaluable() = 0;
 
@@ -37,14 +34,15 @@ public:
 	 *
 	 *	\returns Numerical value of my insides.
 	 */
-	virtual double Evaluate() = 0;
+	virtual double evaluate() = 0;
+
     //! Delete given child and replace it with an input node.
     /*!
      *  @remarks This function should be called by the child object
      *          on its parent.
      *  @param   p_child The child to be deleted.
      */
-    virtual void DeleteChild(IEvaluable* p_child) = 0;
+    virtual void delete_child(IEvaluable* p_child) = 0;
 
     //! Change the childs type.
     /*!
@@ -53,9 +51,9 @@ public:
      *  @param  p_child The child to be replaced.
      *  @param  p_type  Type of the new child.
      */
-    virtual void ChangeChild(IEvaluable* p_child, operation_t p_type) = 0;
+    virtual void change_child(IEvaluable* p_child, operation_t p_type) = 0;
 
 protected:
     IEvaluable* m_parent;
-}
+};
 IEvaluable::~IEvaluable(){}

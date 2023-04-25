@@ -1,5 +1,5 @@
 /**
- * @file entrynode.cpp
+ * @file entryNode.cpp
  *
  * @author zdeněk borovec <xborov08@vutbr.cz>
  * @author tomáš krejčí <xkrejc84@vutbr.cz>
@@ -14,19 +14,7 @@
 
 #include "entryNode.hpp"
 
-
-//!	leaf node of the operational tree.
-/*!
- *	you can enter numbers here.
- */
-class entrynode : public ievaluable
+EntryNode::EntryNode()
 {
-public:
-	//! constructor.
-	entrynode();
-
-    //! destructor.
-	virtual ~entrynode();
-
-protected:
+    m_Entry.set_expand(true);
 }

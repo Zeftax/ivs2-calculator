@@ -127,7 +127,7 @@ Jakub Mitrenga</property>
     <property name="can-focus">False</property>
     <property name="margin-bottom">5</property>
     <child>
-      <object class="GtkBox">
+      <object class="GtkBox" id="containerBox">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="orientation">vertical</property>
@@ -226,12 +226,12 @@ Jakub Mitrenga</property>
           </packing>
         </child>
         <child>
-          <object class="GtkBox">
+          <object class="GtkBox" id="calcBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkFrame">
+              <object class="GtkFrame" id="InputFrame">
                 <property name="height-request">80</property>
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
@@ -239,24 +239,20 @@ Jakub Mitrenga</property>
                 <property name="label-xalign">0</property>
                 <property name="shadow-type">none</property>
                 <child>
-                  <object class="GtkAlignment">
+                  <object class="GtkScrolledWindow" id="InputWindow">
                     <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="left-padding">12</property>
-                    <property name="right-padding">12</property>
+                    <property name="can-focus">True</property>
+                    <property name="margin-start">8</property>
+                    <property name="margin-end">8</property>
+                    <property name="margin-top">4</property>
+                    <property name="margin-bottom">4</property>
+                    <property name="shadow-type">in</property>
                     <child>
-                      <object class="GtkScrolledWindow">
+                      <object class="GtkViewport" id="InputViewport">
                         <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="shadow-type">in</property>
+                        <property name="can-focus">False</property>
                         <child>
-                          <object class="GtkViewport">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <child>
-                              <placeholder/>
-                            </child>
-                          </object>
+                          <placeholder/>
                         </child>
                       </object>
                     </child>

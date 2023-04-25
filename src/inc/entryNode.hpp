@@ -18,14 +18,41 @@
 /*!
  *	you can enter numbers here.
  */
-class entrynode : public ievaluable
+class EntryNode : public IEvaluable
 {
 public:
 	//! constructor.
-	entrynode();
+	EntryNode();
 
     //! destructor.
-	virtual ~entrynode();
+	virtual ~EntryNode();
 
+	//! Evaluate my numerical value
+	/*!
+	 *	Either return my value if I hold a number, or evaluete the expression
+	 *	I am representing if I am an expression container.
+	 *
+	 *	\returns Numerical value of my insides.
+	 */
+    void evaluate();
+
+    //! Delete given child and replace it with an input node.
+    /*!
+     *  @remarks This function should be called by the child object
+     *          on its parent.
+     *  @param   p_child The child to be deleted.
+     */
+    void delete_child(IEvaluable* p_child);
+
+    //! Change the childs type.
+    /*!
+     *  @remarks    This should be called by an entry node on its parent
+     *              upon the change of the entry node to an operation node.
+     *  @param  p_child The child to be replaced.
+     *  @param  p_type  Type of the new child.
+     */
+    void change_child(IEvaluable* p_child, operation_t p_type);
+
+    Gtk::Entry m_Entry;
 protected:
-}
+};
