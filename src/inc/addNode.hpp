@@ -25,7 +25,7 @@ public:
 	AddNode(IEvaluable* parent);
 
     //! Destructor.
-	virtual ~AddContainer();
+	virtual ~AddNode();
 
 protected:
 }
