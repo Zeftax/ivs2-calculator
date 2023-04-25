@@ -17,6 +17,7 @@
 EntryNode::EntryNode()
 {
     m_entry = Gtk::Entry();
+    m_entry.set_text("hello");
 }
 
 EntryNode::~EntryNode()
