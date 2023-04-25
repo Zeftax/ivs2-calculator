@@ -21,6 +21,7 @@
 
 #include "ivs-math.hpp"
 #include "rootNode.hpp"
+#include "iEvaluable.hpp"
 
 namespace
 {

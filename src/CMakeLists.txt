@@ -25,6 +25,7 @@ project("ratulator"
 add_subdirectory("extern/ivs2-mathlib")
 
 include_directories(inc)
+include_directories(src)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -59,6 +60,7 @@ add_executable(${PROJECT_NAME})
 target_sources(${PROJECT_NAME}
     PRIVATE
         src/calculator.cpp
+        src/rootNode.cpp
         ${CMAKE_CURRENT_BINARY_DIR}/${GRESOURCE_C}
 )
 
