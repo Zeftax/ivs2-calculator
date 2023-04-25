@@ -4,6 +4,16 @@ Calculator for the second IVS project for academic year 2022/2023
 A simple graphical calculator. <br>
 The main focus of our IVS project for the academic year 2022/2023 at BUT FIT.
 
+#### Environment
+Ubuntu 64bit
+#### Authors
+**Team:** The FitnessGram Pacer test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter Pacer test will begin in 30 seconds. Line up at the start.
+<br>
+- `xborov08` Zdeněk Borovec
+- `xkrejc84` Tomáš Krejčí
+- `xlozrt00` Jan Lozrt
+- `xmitre07` Jakub Mitrenga
+
 Installing
 ---
 #### Installing from source
