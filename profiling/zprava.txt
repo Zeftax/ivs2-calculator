@@ -1,3 +1,29 @@
+EN
+---
+The program spends a significant amount of time in the mathematical function ivsm:add()
+due to calculating the sum of input data.
+This function uses the "+" operator and for that reason I currently do not see 
+a way of optimizing it.
+
+Another time consuming function is std::pow() called by our function ivsm::exponentiate().
+The function std::pow() from the cmath library is likely optimized enough 
+already, however, according to the stackoverflow answer by Emile Cormier 
+(https://stackoverflow.com/a/2940800), simple multiplication of variables would
+be faster in some cases.
+
+The program was profiled with input data of size 10, 1000 and 1 million randomly
+generated numbers in the range of -10000 to +1 million.
+(a python script using the function randint() from the random library was used 
+to generate the numbers)
+
+The gperftools collection of analysis tools was used to profile the program
+(the graph was generated using a newer version of pprof written in go).
+I excluded the function read_input() from the graph using the -ignore option as
+it does not use any functions from our math library and therefore is not relevant.
+
+
+CZ
+---
 Program tráví značné množství času v matematické funkci ivsm::add() z důvodu výpočtu sumy načtených dat.
 Tato funkce využívá běžný operátor "+" a tedy momentálně nevidím způsob, jak ji optimalizovat.
 
@@ -6,8 +32,13 @@ Funkce std::pow() z knihovny cmath již je pravděpodobně optimalizovaná dosta
 odpovědi uživatele Emile Cormier na stackoverflow (https://stackoverflow.com/a/2940800)
 by v určitých případech bylo rychlejší prosté násobení proměnných.
 
-K profilingu byla využita sada nástrojů gperftools.
-Z grafu jsem parametrem -ignore vynechal funkci read_input(), která neobsahuje 
+Program byl profilován se vstupními daty v počtu 10, 1000 a 1 milion náhodně 
+generovaných čísel v rozmezí -10000 až +1 milion. 
+(ke generaci byl použit python skript a funkce randint() z knihovny random)
+
+K profilingu byla využita sada nástrojů gperftools 
+(graf byl generován novější verzí pprof napsanou v jazyce go).
+Z grafu jsem možností -ignore vynechal funkci read_input(), která neobsahuje 
 žádné volání funkce z naší matematické knihovny a není tím pádem relevantní.
 
 -- Tomáš Krejčí (xkrejc84)
