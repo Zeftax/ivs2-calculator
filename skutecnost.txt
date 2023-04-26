@@ -1,0 +1,5 @@
+Původně jsme plánovali aplikaci v GTK4, ale kvůli zastaralým Ubuntu repozitářům
+jsme museli snížit verzi na GTK3 kvůli knihovně gtkmm.
+
+Také se nevydařilo pokročilé parsování vstupu GUI a na poslední chvíli jsme museli
+implementovat pouze základní zadávání čísel a operací.
