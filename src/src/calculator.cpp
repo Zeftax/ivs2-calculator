@@ -24,8 +24,6 @@
 #include <string>
 
 #include "ivs-math.hpp"
-#include "rootNode.hpp"
-#include "iEvaluable.hpp"
 
 namespace
 {
@@ -552,7 +550,6 @@ void on_app_activate()
         Glib::RefPtr<Gtk::Label>::cast_dynamic(refBuilder->get_object("opLabel"));
     opPtr = opLabel;
 
-    RootNode rootNode = RootNode(inputViewport);
 
 	pDialog->signal_hide().connect([] () { delete pDialog; });
 
