@@ -4,6 +4,7 @@
   <requires lib="gtk+" version="3.24"/>
   <object class="GtkAboutDialog" id="aboutWindow">
     <property name="can-focus">False</property>
+    <property name="destroy-with-parent">True</property>
     <property name="type-hint">dialog</property>
     <property name="program-name">Ratulator - about</property>
     <property name="version">1.0.0</property>
@@ -15,7 +16,7 @@
 Tomáš Krejčí
 Jan Lozrt
 Jakub Mitrenga</property>
-    <property name="logo-icon-name">start-here</property>
+    <property name="logo">icons/ratulator.png</property>
     <property name="license-type">gpl-3-0</property>
     <child internal-child="vbox">
       <object class="GtkBox">
@@ -125,108 +126,16 @@ Jakub Mitrenga</property>
   </object>
   <object class="GtkWindow" id="calcWindow">
     <property name="can-focus">False</property>
-    <property name="margin-bottom">5</property>
     <child>
       <object class="GtkBox" id="containerBox">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="margin-top">12</property>
+        <property name="margin-bottom">12</property>
         <property name="orientation">vertical</property>
         <property name="spacing">8</property>
         <child>
-          <object class="GtkMenuBar">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="valign">start</property>
-            <child>
-              <object class="GtkMenuItem">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="label" translatable="yes">_Edit</property>
-                <property name="use-underline">True</property>
-                <child type="submenu">
-                  <object class="GtkMenu">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-cut</property>
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="use-underline">True</property>
-                        <property name="use-stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-copy</property>
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="use-underline">True</property>
-                        <property name="use-stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-paste</property>
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="use-underline">True</property>
-                        <property name="use-stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-delete</property>
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="use-underline">True</property>
-                        <property name="use-stock">True</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkMenuItem">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="label" translatable="yes">_Help</property>
-                <property name="use-underline">True</property>
-                <child type="submenu">
-                  <object class="GtkMenu">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-about</property>
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="use-underline">True</property>
-                        <property name="use-stock">True</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkMenuItem">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="label" translatable="yes">_View</property>
-                <property name="use-underline">True</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkBox" id="calcBox">
+          <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="orientation">vertical</property>
@@ -252,7 +161,53 @@ Jakub Mitrenga</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <child>
-                          <placeholder/>
+                          <object class="GtkViewport">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <child>
+                              <object class="GtkBox">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <child>
+                                  <object class="GtkLabel" id="opLabel">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="hexpand">False</property>
+                                    <property name="xpad">15</property>
+                                    <property name="selectable">True</property>
+                                    <property name="xalign">0</property>
+                                    <attributes>
+                                      <attribute name="scale" value="2"/>
+                                    </attributes>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="inputLabel">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="hexpand">True</property>
+                                    <property name="xpad">15</property>
+                                    <property name="label" translatable="yes">0</property>
+                                    <property name="selectable">True</property>
+                                    <property name="xalign">1</property>
+                                    <attributes>
+                                      <attribute name="scale" value="2"/>
+                                    </attributes>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
                         </child>
                       </object>
                     </child>
@@ -290,7 +245,6 @@ Jakub Mitrenga</property>
                       <object class="GtkBox">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="hexpand">True</property>
                         <property name="spacing">12</property>
                         <child>
                           <!-- n-columns=2 n-rows=4 -->
@@ -298,10 +252,10 @@ Jakub Mitrenga</property>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="margin-end">8</property>
+                            <property name="margin-top">42</property>
                             <property name="orientation">vertical</property>
                             <property name="row-spacing">2</property>
                             <property name="column-spacing">8</property>
-                            <property name="row-homogeneous">True</property>
                             <property name="column-homogeneous">True</property>
                             <child>
                               <object class="GtkButton" id="plus">
@@ -375,7 +329,7 @@ Jakub Mitrenga</property>
                             </child>
                             <child>
                               <object class="GtkButton" id="root">
-                                <property name="label" translatable="yes">root</property>
+                                <property name="label" translatable="yes">X √ Y</property>
                                 <property name="name">root</property>
                                 <property name="width-request">69</property>
                                 <property name="height-request">58</property>
@@ -424,16 +378,14 @@ Jakub Mitrenga</property>
                           </packing>
                         </child>
                         <child>
-                          <!-- n-columns=3 n-rows=4 -->
+                          <!-- n-columns=3 n-rows=5 -->
                           <object class="GtkGrid" id="numGrid">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="margin-start">8</property>
                             <property name="margin-end">8</property>
                             <property name="orientation">vertical</property>
                             <property name="row-spacing">2</property>
                             <property name="column-spacing">2</property>
-                            <property name="row-homogeneous">True</property>
                             <property name="column-homogeneous">True</property>
                             <child>
                               <object class="GtkButton" id="one">
@@ -446,7 +398,7 @@ Jakub Mitrenga</property>
                               </object>
                               <packing>
                                 <property name="left-attach">0</property>
-                                <property name="top-attach">2</property>
+                                <property name="top-attach">3</property>
                               </packing>
                             </child>
                             <child>
@@ -460,7 +412,7 @@ Jakub Mitrenga</property>
                               </object>
                               <packing>
                                 <property name="left-attach">1</property>
-                                <property name="top-attach">2</property>
+                                <property name="top-attach">3</property>
                               </packing>
                             </child>
                             <child>
@@ -474,7 +426,7 @@ Jakub Mitrenga</property>
                               </object>
                               <packing>
                                 <property name="left-attach">2</property>
-                                <property name="top-attach">2</property>
+                                <property name="top-attach">3</property>
                               </packing>
                             </child>
                             <child>
@@ -488,7 +440,7 @@ Jakub Mitrenga</property>
                               </object>
                               <packing>
                                 <property name="left-attach">0</property>
-                                <property name="top-attach">1</property>
+                                <property name="top-attach">2</property>
                               </packing>
                             </child>
                             <child>
@@ -502,7 +454,7 @@ Jakub Mitrenga</property>
                               </object>
                               <packing>
                                 <property name="left-attach">1</property>
-                                <property name="top-attach">1</property>
+                                <property name="top-attach">2</property>
                               </packing>
                             </child>
                             <child>
@@ -516,7 +468,7 @@ Jakub Mitrenga</property>
                               </object>
                               <packing>
                                 <property name="left-attach">2</property>
-                                <property name="top-attach">1</property>
+                                <property name="top-attach">2</property>
                               </packing>
                             </child>
                             <child>
@@ -530,7 +482,7 @@ Jakub Mitrenga</property>
                               </object>
                               <packing>
                                 <property name="left-attach">0</property>
-                                <property name="top-attach">0</property>
+                                <property name="top-attach">1</property>
                               </packing>
                             </child>
                             <child>
@@ -544,7 +496,7 @@ Jakub Mitrenga</property>
                               </object>
                               <packing>
                                 <property name="left-attach">1</property>
-                                <property name="top-attach">0</property>
+                                <property name="top-attach">1</property>
                               </packing>
                             </child>
                             <child>
@@ -558,21 +510,7 @@ Jakub Mitrenga</property>
                               </object>
                               <packing>
                                 <property name="left-attach">2</property>
-                                <property name="top-attach">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkButton" id="zero">
-                                <property name="width-request">78</property>
-                                <property name="height-request">58</property>
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">True</property>
-                                <property name="image">image0</property>
-                              </object>
-                              <packing>
-                                <property name="left-attach">0</property>
-                                <property name="top-attach">3</property>
+                                <property name="top-attach">1</property>
                               </packing>
                             </child>
                             <child>
@@ -586,7 +524,7 @@ Jakub Mitrenga</property>
                               </object>
                               <packing>
                                 <property name="left-attach">1</property>
-                                <property name="top-attach">3</property>
+                                <property name="top-attach">4</property>
                               </packing>
                             </child>
                             <child>
@@ -601,7 +539,59 @@ Jakub Mitrenga</property>
                               </object>
                               <packing>
                                 <property name="left-attach">2</property>
-                                <property name="top-attach">3</property>
+                                <property name="top-attach">4</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="del">
+                                <property name="label" translatable="yes">&lt;-</property>
+                                <property name="height-request">42</property>
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">True</property>
+                              </object>
+                              <packing>
+                                <property name="left-attach">2</property>
+                                <property name="top-attach">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="clear">
+                                <property name="label" translatable="yes">CE</property>
+                                <property name="height-request">42</property>
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">True</property>
+                              </object>
+                              <packing>
+                                <property name="left-attach">1</property>
+                                <property name="top-attach">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="ans">
+                                <property name="label" translatable="yes">ANS</property>
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">True</property>
+                              </object>
+                              <packing>
+                                <property name="left-attach">0</property>
+                                <property name="top-attach">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="zero">
+                                <property name="width-request">78</property>
+                                <property name="height-request">58</property>
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">True</property>
+                                <property name="image">image0</property>
+                              </object>
+                              <packing>
+                                <property name="left-attach">0</property>
+                                <property name="top-attach">4</property>
                               </packing>
                             </child>
                           </object>
@@ -619,6 +609,7 @@ Jakub Mitrenga</property>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="margin-top">7</property>
                     <property name="xpad">12</property>
                     <property name="label" translatable="yes">Math functions</property>
                   </object>
@@ -636,7 +627,6 @@ Jakub Mitrenga</property>
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="valign">end</property>
-                <property name="margin-bottom">8</property>
                 <property name="label-xalign">0</property>
                 <property name="shadow-type">none</property>
                 <child>
@@ -659,8 +649,24 @@ Jakub Mitrenga</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="margin-end">8</property>
+                                <property name="homogeneous">True</property>
                                 <child>
-                                  <placeholder/>
+                                  <object class="GtkLabel" id="resLabel">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="xpad">15</property>
+                                    <property name="label" translatable="yes">-</property>
+                                    <property name="selectable">True</property>
+                                    <property name="xalign">1</property>
+                                    <attributes>
+                                      <attribute name="scale" value="2"/>
+                                    </attributes>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
                                 </child>
                               </object>
                             </child>
@@ -674,6 +680,7 @@ Jakub Mitrenga</property>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="margin-top">7</property>
                     <property name="xpad">12</property>
                     <property name="label" translatable="yes">Result</property>
                   </object>
@@ -689,7 +696,7 @@ Jakub Mitrenga</property>
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="position">1</property>
+            <property name="position">2</property>
           </packing>
         </child>
       </object>

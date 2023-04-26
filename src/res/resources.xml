@@ -14,5 +14,6 @@
       <file>res/rats/9.png</file>
       <file>res/rats/point.png</file>
       <file>res/rats/equals.png</file>
+      <file>res/icons/ratulator.png</file>
   </gresource>
 </gresources>
